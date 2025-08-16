@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.soloval.tech</groupId>
+		<artifactId>slv-keycloak-server</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<artifactId>slv-keycloak-rest</artifactId>
+	<name>slv-rest</name>
+	<description>Demo project for Spring Boot</description>
+	<dependencies>
+		<dependency>
+			<groupId>com.soloval.tech</groupId>
+			<artifactId>slv-keycloak-core</artifactId>
+			<version>${revision}</version>
+		</dependency>
+        <dependency>
+            <groupId>com.soloval.tech</groupId>
+            <artifactId>slv-keycloak-ui</artifactId>
+			<version>${revision}</version>
+        </dependency>
+    </dependencies>
+<!--	<build>-->
+<!--		<plugins>-->
+<!--			<plugin>-->
+<!--				<groupId>io.smallrye</groupId>-->
+<!--				<artifactId>smallrye-open-api-maven-plugin</artifactId>-->
+<!--				<version>4.1.1</version>-->
+<!--				<configuration>-->
+<!--					<outputDirectory>${project.build.directory}/openapi</outputDirectory>-->
+<!--					<scanPackages>com.soloval.tech.api</scanPackages>-->
+<!--					<infoTitle>Keycloak REST API Extension</infoTitle>-->
+<!--					<infoDescription>This is a REST API reference for the Keycloak REST API extensions.</infoDescription>-->
+<!--				</configuration>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>generate-schema</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
+<!--		</plugins>-->
+<!--	</build>-->
+
+</project>

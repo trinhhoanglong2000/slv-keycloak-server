@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  soloval-keycloak:
+    container_name: soloval-keycloak
+    build: .
+    image: my-keycloak-rest:latest
+    command:
+      - start-dev
+      - --import-realm
+      - --features=declarative-ui
+    ports:
+      - "9081:8080"
+      - "5005:5005"
+    volumes:
+      - ./keycloak-realm-config:/opt/keycloak/data/import
+      - ./keycloak-providers:/opt/keycloak/providers
+    depends_on:
+      - postgres
+    environment:
+      KC_DEBUG: true
+      KC_BOOTSTRAP_ADMIN_USERNAME : admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin@1234
+      KC_DB: postgres
+      KC_DB_SCHEMA: public
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: 1234
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      PROXY_ADDRESS_FORWARDING: 'true'
+      KC_PROXY: edge
+      KC_HOSTNAME_STRICT: 'false'
+      KC_HOSTNAME_STRICT_HTTPS: 'false'
+      KC_HTTP_ENABLED: 'true'
+      SECRET_OTP: aSqzP4reFgWR4j94BDT1r+81QYp/NYbY9SBwXtqV1ko=
+
+      JAVA_TOOL_OPTIONS: -Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+    networks:
+      - keycloak
+  postgres:
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-1234}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - keycloak
+    restart: unless-stopped
+
+networks:
+  keycloak:
+
+volumes:
+  postgres:
