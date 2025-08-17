@@ -84,3 +84,24 @@ docker-compose up
     - Port: 5005
   
     Start the server with debugging enabled (ensure port 5005 is exposed in your Docker setup).
+- ## **Visual Studio Code**
+  Open .**vscode/launch.json** (create it if it doesn't exist)
+
+  Add the following configuration:
+  ```json
+  {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "java",
+        "name": "Attach to Remote JVM",
+        "request": "attach",
+        "hostName": "localhost",
+        "port": 5005
+      }
+    ]
+  }
+  - ```
+  Go to the Run and Debug panel
+
+  Select Attach to Remote JVM and click Start Debugging
