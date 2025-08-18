@@ -101,7 +101,8 @@ docker-compose up
       }
     ]
   }
-  - ```
+  ```
+  
   Go to the Run and Debug panel
 
   Select Attach to Remote JVM and click Start Debugging
