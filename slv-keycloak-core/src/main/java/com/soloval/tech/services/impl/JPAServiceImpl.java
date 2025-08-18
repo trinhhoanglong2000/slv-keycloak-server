@@ -7,6 +7,7 @@ import com.soloval.tech.jpa.VerificationCode;
 import com.soloval.tech.services.JPAService;
 import com.soloval.tech.utils.KeycloakUtils;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TemporalType;
 import org.keycloak.connections.jpa.JpaConnectionProvider;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
@@ -18,6 +19,25 @@ public class JPAServiceImpl implements JPAService {
     public JPAServiceImpl(KeycloakSession session) {
         this.session = session;
         entityManager = session.getProvider(JpaConnectionProvider.class).getEntityManager();
+    }
+
+    @Override
+    public Boolean verifyOTPVertificationCode(String realmId, String userId, String otp, String transactionId) {
+        //TODO: After verify, disable old token
+        try {
+            Integer veriCode = entityManager.createNamedQuery("VerificationCode.validateVerificationCode", Integer.class)
+                    .setParameter("realmId", realmId)
+                    .setParameter("userId", userId)
+                    .setParameter("code", otp)
+                    .setParameter("now", ZonedDateTime.now(ZoneOffset.UTC))
+                    .setParameter("transactionId", transactionId)
+                    .getSingleResult();
+            if (veriCode == 1) {
+                return true;
+            }
+        }
+        catch (Exception err){ }
+        return false;
     }
 
     @Override

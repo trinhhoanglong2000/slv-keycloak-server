@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name = "VERIFICATION_CODE")
 @NamedQueries({
-        @NamedQuery(name = "VerificationCode.validateVerificationCode", query = "SELECT 1 FROM VerificationCode t WHERE t.realmId = :realmId AND t.phoneNumber = :phoneNumber AND t.code = :code AND t.expiresAt >= :now AND t.kind = :kind"),
+        @NamedQuery(name = "VerificationCode.validateVerificationCode", query = "SELECT 1 FROM VerificationCode t WHERE t.realmId = :realmId AND t.userId = :userId AND t.code = :code AND t.expiresAt >= :now AND t.transactionId = :transactionId"),
         @NamedQuery(name = "VerificationCode.findByRealm", query = "FROM VerificationCode t WHERE t.realmId = :realmId")
 })
 public class VerificationCode {

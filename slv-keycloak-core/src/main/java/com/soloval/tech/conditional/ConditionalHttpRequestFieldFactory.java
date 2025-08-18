@@ -30,7 +30,7 @@ public class ConditionalHttpRequestFieldFactory implements ConditionalAuthentica
 
     public static final String PROVIDER_ID = "conditional-http-request-field";
 
-    private static final AuthenticationExecutionModel.Requirement[] REQUIREMENT_CHOICES = {
+    private final AuthenticationExecutionModel.Requirement[] REQUIREMENT_CHOICES = {
             AuthenticationExecutionModel.Requirement.REQUIRED, AuthenticationExecutionModel.Requirement.DISABLED
     };
 

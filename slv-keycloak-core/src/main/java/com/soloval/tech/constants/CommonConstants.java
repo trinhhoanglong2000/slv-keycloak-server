@@ -12,6 +12,11 @@ public class CommonConstants {
         public static final String TRANSACTION_ID = "transactionId";
         public static final String OTP = "otp";
     }
+    public static final class RequestFields {
+        public static final String PHONE_NUMBER = "phone";
+        public static final String OTP = "otp";
+        public static final String TRANSACTION_ID = "transactionId";
+    }
     public static final String BODY = "Body";
     public static final String PATH_VARIABLE = "Path Variable";
     public static final String QUERY_PARAMETER = "Query Parameter";
