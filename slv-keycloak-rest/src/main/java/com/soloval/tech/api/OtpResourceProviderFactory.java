@@ -8,7 +8,7 @@ import org.keycloak.services.resource.RealmResourceProviderFactory;
 
 @AutoService(RealmResourceProviderFactory.class)
 public class OtpResourceProviderFactory implements RealmResourceProviderFactory {
-    public static final String PROVIDER_ID = "my-rest-resource";
+    public static final String PROVIDER_ID = "otp-rest-resource";
 
     @Override
     public RealmResourceProvider create(KeycloakSession keycloakSession) {
